@@ -19,7 +19,7 @@ type Getter interface {
 type GetterFunc func(key string) ([]byte, error)
 
 var (
-	mu     *sync.RWMutex
+	mu     = &sync.RWMutex{}
 	groups = make(map[string]*Group)
 )
 
@@ -40,7 +40,7 @@ func NewGroup(name string, capacity int, getter Getter) *Group {
 
 func GetGroup(name string) *Group {
 	mu.RLock()
-	defer mu.Unlock()
+	defer mu.RUnlock()
 	return groups[name]
 }
 
