@@ -26,7 +26,7 @@ const (
 	defaultReplicas = 50
 )
 
-func NewHttpTool(self string) *HttpPool {
+func NewHttpPool(self string) *HttpPool {
 	return &HttpPool{
 		self:     self,
 		basePath: defaultbasePath,
